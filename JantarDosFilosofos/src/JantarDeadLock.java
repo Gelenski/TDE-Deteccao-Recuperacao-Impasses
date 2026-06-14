@@ -1,5 +1,3 @@
-package JantarDosFilosofos;
-
 public class JantarDeadLock {
 
     static class Garfo {
