@@ -31,7 +31,7 @@ public class DeadLockCorrigido {
             }
         });
 
-        System.out.println("Iniciando versão corrigida por hierarquia de recursos...");
+        System.out.println("Iniciando versão corrigida...");
         t1.start();
         t2.start();
 

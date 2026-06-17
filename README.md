@@ -66,9 +66,9 @@ Recurso B e aguarda o A, formando um ciclo onde nenhuma avança.
 
 ### Solução
 
-A correção impõe hierarquia de recursos: ambas as threads adquirem sempre o Recurso A
-antes do Recurso B, eliminando a espera circular pois não é possível formar um ciclo
-quando todas seguem a mesma ordem de aquisição.
+A correção faz com que as duas threads adquiram sempre o Recurso A antes do Recurso B.
+Com isso, a espera circular deixa de existir, pois se ambas seguem a mesma ordem,
+nunca haverá um ciclo de espera entre elas.
 
 ### Pseudocódigo com Deadlock
 
@@ -104,6 +104,7 @@ Thread 1 pegou o Recurso A
 Thread 2 pegou o Recurso B
 Thread 2 aguardando o Recurso A
 Thread 1 aguardando o Recurso B
+← programa trava aqui, sem mais saídas
 ```
 
 ### Log - Versão Corrigida
