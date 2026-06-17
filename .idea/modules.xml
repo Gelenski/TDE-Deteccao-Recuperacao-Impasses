@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PSCF.iml" filepath="$PROJECT_DIR$/PSCF.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parte3-deadlock/parte3-deadlock.iml" filepath="$PROJECT_DIR$/parte3-deadlock/parte3-deadlock.iml" />
     </modules>
   </component>
 </project>
