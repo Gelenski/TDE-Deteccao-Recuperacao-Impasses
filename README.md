@@ -49,6 +49,43 @@ enquanto (verdadeiro):
     largarGarfoEsquerdo
     liberarGarcom
 ```
+## Parte 2 - Threads e semáforos
+O semáforo garante controle quando threads querem acessar o mesmo recurso do sistema ao mesmo tempo,
+garantindo que ocorra justiça e não haja nenhuma perda.
+
+### Execução sem semáforo
+
+
+| Execução | Valor Esperado | Valor Obtido | Tempo de Execução (ms) |
+| :---: | :---: | :---: | :---: |
+| **1ª** | 1.600.000 | 353.736 | 26,294 ms |
+| **2ª** | 1.600.000 | 389.996 | 32,826 ms |
+| **3ª** | 1.600.000 | 386.811 | 30,132 ms |
+
+Com Semáforo Binário (FIFO)
+
+| Execução | Valor Esperado | Valor Obtido | Tempo de Execução (ms) |
+| :---: | :---: | :---: | :---: |
+| **1ª** | 1.600.000 | 1.600.000 | 4.661,981 ms |
+| **2ª** | 1.600.000 | 1.600.000 | 4.596,703 ms |
+| **3ª** | 1.600.000 | 1.600.000 | 4.538,603 ms |
+
+### Considerações Finais
+
+
+* **Consequências da Condição de Corrida:** O contador++ executa 3 ações: leitura do valor atual, incremento e
+por fim gravação, por conta da falta de sincronização os threads podem incrementar ao mesmo tempo, fazendo com que
+se perca incrementos no caminho, como observado no primeiro teste;
+* **Por que a versão com semáforo é correta ?:** Utilizando da exclusão mútua o programa realiza apenas 1 incremento por vez, como numa fila para
+ir ao banheiro, se há apenas uma vaga e está ocupado a próxima pessoa na fila deve esperar a vaga liberar para assim entrar;
+* **Trade-off e throughput:** Na versão sem sincronização o tempo de execução é relativamente menor, porém a quantidade de incrementos
+perdidos faz com que esse tempo seja inútil.
+Já na versão com semáforo (justo) utilizando FIFO, o tempo de execução acabou sendo maior, porém nenhum
+incremento se perdeu, sendo bem mais efetivo;
+* **Happens-before:** A regra de Happens-before em Java faz com que os problemas de visibilidade
+e ordenação sejam corrigidos, se um thread A acontece antes de B, o Java garante que o resultado de A será
+visível para B antes de executar, e quando B adquiri o semáforo, será forçado a ler o valor atualizado direto na memória global.
+
 
 ## Parte 3 - Deadlock
 
