@@ -156,3 +156,8 @@ Thread 2 pegou o Recurso B.
 Thread 2 concluiu.
 Execução finalizada sem deadlock.
 ```
+
+## Vídeo
+```
+https://youtu.be/SkvBSYZrUa4
+```
